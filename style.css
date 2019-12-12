@@ -34,20 +34,19 @@ header .top-bar h1 img {
 header .top-bar h1 span {
   height: 32px;
 }
-header .top-bar ul {
+header .top-bar .ul {
   padding: 0;
   margin: 0 8px;
-  list-style: none;
 }
-header .top-bar ul li {
+header .top-bar .ul .li {
   
 }
-header .top-bar ul a {
+header .top-bar .ul a {
   text-decoration: none;
   color: #030303;
 }
-header .top-bar ul a:-moz-any-link,
-header .top-bar ul a:-webkit-any-link {
+header .top-bar .ul a:-moz-any-link,
+header .top-bar .ul a:-webkit-any-link {
   text-decoration: none;
   color: #030303;
 }
@@ -127,8 +126,22 @@ main article section {
 }
 main article section h3 {
   padding-left: 5px;
-  border-left: solid 5px #0a0a0a;
-  border-bottom: solid 1px #0a0a0a;
+  border-bottom: solid 1px #ccc;
+}
+main article .download {
+
+}
+main article .download #latest {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+}
+main article .download #latest>div {
+  flex-basis: 200px;
+  flex-grow: 1;
+  flex-shrink: 0;
+  padding: 16px;
 }
 main article section .developers {
   display: flex;
@@ -145,6 +158,11 @@ main article section .developers .developer h4 {
 }
 main article section .developers .developer p {
   margin: 0;
+}
+@media (min-width: 640px) {
+  main section h3 {
+    font-size: 32px;
+  }
 }
 
 footer {

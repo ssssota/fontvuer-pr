@@ -19,9 +19,9 @@
         <span>fontvuer</span>
       </h1>
       <div class="flex-space"></div>
-      <ul>
-        <a href="#download" title="download"><li>Download</li></a>
-      </ul>
+      <div class="ul">
+        <a href="#download" title="download"><div class="li">Download</div></a>
+      </div>
     </div>
     <!-- TOP BAR END -->
     <section class="eyecatch">
@@ -47,9 +47,23 @@
       </section>
     </article>
     <article>
-      <section>
-        <h3 id="download">Download</h3>
-        <p>Please visit to <a href="https://github.com/ssssota/fontvuer/releases" target="_blank">github page.<span class="mdi mdi-open-in-new"></span></a></p>
+      <section id="download" class="download">
+        <h3>Download</h3>
+        <div id="latest" style="display:none;">
+          <div>
+            <h4>Windows</h4>
+            <p><a id="windows" target="_blank" rel="noreferrer"></a></p>
+          </div>
+          <div>
+            <h4>macOS</h4>
+            <p><a id="mac" target="_blank" rel="noreferrer"></a></p>
+          </div>
+          <div>
+            <h4>Linux</h4>
+            <p><a id="linux" target="_blank" rel="noreferrer"></a></p>
+          </div>
+        </div>
+        <p id="githubLink"><a href="https://github.com/ssssota/fontvuer/releases" target="_blank" rel="noreferrer">Other versions.<span class="mdi mdi-open-in-new"></span></a></p>
       </section>
       <section>
         <h3>This software is Open Source</h3>
@@ -62,7 +76,10 @@
           <div class="developer">
             <h4>ssssota</h4>
             <p class="description">Please donate ;)</p>
-            <p class="action"><a href="https://github.com/ssssota"><span class="mdi mdi-github-circle"></span></a><a href="https://twitter.com/ssssotaro"><span class="mdi mdi-twitter"></span></a></p>
+            <p class="action">
+              <a href="https://github.com/ssssota" rel="noreferrer" title="github" target="_blank"><span class="mdi mdi-github-circle"></span></a>
+              <a href="https://twitter.com/ssssotaro" rel="noreferrer" title="twitter" target="_blank"><span class="mdi mdi-twitter"></span></a>
+            </p>
           </div>
         </div>
       </section>
@@ -71,5 +88,27 @@
   <footer>
     <small>Copyright &copy; 2019 Sotaro Tommykawa.</small>
   </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const res = await fetch('https://api.github.com/repos/ssssota/fontvuer/releases/latest')
+      const json = await res.json()
+      const latestVersion = json['tag_name'].substring(1)
+      const windows = json.assets.filter(asset => asset.name.endsWith('.exe'))[0]
+      const mac = json.assets.filter(asset => asset.name.endsWith('.dmg'))[0]
+      const linux = json.assets.filter(asset => asset.name.endsWith('.AppImage'))[0]
+
+      const $windows = document.querySelector('#windows')
+      $windows.textContent = windows.name
+      $windows.href = windows["browser_download_url"]
+      const $mac = document.querySelector('#mac')
+      $mac.textContent = mac.name
+      $mac.href = mac["browser_download_url"]
+      const $linux = document.querySelector('#linux')
+      $linux.textContent = linux.name
+      $linux.href = linux["browser_download_url"]
+
+      document.querySelector('#latest').style.display = 'flex'
+    })
+  </script>
 </body>
 </html>
