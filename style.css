@@ -3,7 +3,7 @@ html, body {
   padding: 0;
 
   color: #030303;
-  font-family: "Lato","Noto Sans Japanese", "BIZ UDPGothic", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  font-family: "Lato", "Noto Sans Japanese", "Arial", "BIZ UDPGothic", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
 }
 .flex-space {
   flex: 1 1 auto;
@@ -125,7 +125,7 @@ main article section {
 
 }
 main article section h3 {
-  padding-left: 5px;
+  padding: 5px;
   border-bottom: solid 1px #ccc;
 }
 main article .download {
